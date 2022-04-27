@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    width: 100%;
+    padding: 10px 0;
+    background-color: #446A46;
+    text-align: center;
+    font-size: 2em;
+	font-weight: 600;
+    color: #fff;
+}
+
+.login{
+    height: 90vh;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-form {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+table { 
+	width: 750px; 
+	border-collapse: collapse; 
+	margin:50px auto;
+	}
+
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+	background: #eee; 
+	}
+
+th { 
+	background: #3498db; 
+	color: white; 
+	font-weight: bold; 
+	}
+
+td, th { 
+	padding: 10px; 
+	border: 1px solid #ccc; 
+	text-align: left; 
+	font-size: 18px;
+	}
+
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	table { 
+	  	width: 100%; 
+	}
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+		/* Label the data */
+		content: attr(data-column);
+
+		color: #000;
+		font-weight: bold;
+	}
+
+}
+
+.admin {
+    text-align: center;
+}
+
+.title {
+    margin: 20px 0;
+}
+
+.btn {
+    padding: 8px 12px;
+    border: solid transparent 1px;
+    background-color: seagreen;
+
+    border-radius: 8px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.btn-table {
+	margin: 0 5px;
+	text-decoration: none;
+	font-weight: 300;
+}
+
+.btn-cancel {
+	padding: 8px 12px;
+    border: solid transparent 1px;
+    background-color: #999999;
+
+    border-radius: 8px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.input {
+	border: 0; 
+	padding: 7px 0; 
+	border-bottom: 1px solid #ccc;
+	width: 200%;
+	margin: 6px 0;
+}
+
+
+.form {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.form-control {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
