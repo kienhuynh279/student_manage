@@ -1,7 +1,7 @@
-<div class="admin">
-    <h1 class="title">Create Student</h1>
+<div id="studentModal" class="admin">
+    <h1 class="title modal-title">Create Student</h1>
 
-    <form class="form" action="<?php echo base_url() . 'admin/home/student/create' ?>" method="post">
+    <form class="form" id="student_form" method="post">
         <div class="form-control">
             <label for=" name">Full Name: </label>
             <input class="input" type="text" name="name" id="">
@@ -19,6 +19,13 @@
             <input class="input" type="text" name="phone" id="">
         </div>
 
-        <input class="btn" type="submit" value="Submit">
+        <div class="modal-footer">
+            <input type="hidden" name="user_id" id="user_id" />
+            <input type="hidden" name="data_action" id="data_action" value="Insert" />
+            <input type="submit" name="action" id="action" class="btn btn-success" value="Add" />
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
     </form>
 </div>
+
+<!-- <h1>action=" echo base_ur . 'admin/home/student/create' ?>"</h1> -->
