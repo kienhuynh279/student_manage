@@ -29,30 +29,7 @@ class Student extends CI_Controller
 
     public function create()
     {
-        $this->load->model('Students');
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-
-        $this->form_validation->set_rules('name', 'Name', 'required');
-        $this->form_validation->set_rules('course', 'Course', 'required');
-        $this->form_validation->set_rules('major', 'Major', 'required');
-        $this->form_validation->set_rules('phone', 'Phone', 'required');
-
-        if ($this->form_validation->run() == FALSE) {
-            $data['template'] = 'admin/student/create';
-            $this->load->view('admin/home', $data);
-        } else {
-            $formArr = array(
-                'name' => $this->input->post('name'),
-                'course' => $this->input->post('course'),
-                'major' => $this->input->post('major'),
-                'phone' => $this->input->post('phone'),
-            );
-
-            $this->Students->create($formArr);
-
-            redirect(base_url() . 'admin/home/student');
-        }
+        redirect(base_url() . 'admin/home/student');
     }
 
     public function edit($id)

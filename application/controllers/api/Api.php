@@ -36,6 +36,57 @@ class Api extends CI_Controller
             $array = array(
                 'success'  => true
             );
+
+            redirect(base_url() . 'admin/home/student');
+        } else {
+            $array = array(
+                'error'    => true,
+                'name_error' => form_error('name'),
+                'major_error' => form_error('major'),
+                'course_error' => form_error('course'),
+                'phone_error' => form_error('phone')
+            );
+        }
+        // 
+
+        $data['template'] = 'admin/student/create';
+        $this->load->view('admin/home', $data);
+    }
+
+    public function fetch_single()
+    {
+        if ($this->input->post('id')) {
+            $arr = $this->api_model->fetch_single($this->input->post('id'));
+            foreach ($arr as $row) {
+                $output['name'] = $row["name"];
+                $output['course'] = $row["course"];
+                $output['major'] = $row["major"];
+                $output['phone'] = $row["phone"];
+            }
+            echo json_encode($output);
+        }
+    }
+
+    public function update()
+    {
+        $this->form_validation->set_rules("name", "Name", "required");
+        $this->form_validation->set_rules("major", "Major", "required");
+        $this->form_validation->set_rules("course", "Course", "required");
+        $this->form_validation->set_rules("phone", "Phone", "required");
+
+        if ($this->form_validation->run()) {
+            $data = array(
+                'name' => trim($this->input->post('name')),
+                'major'  => trim($this->input->post('major')),
+                'course' => trim($this->input->post('course')),
+                'phone' => trim($this->input->post('phone')),
+            );
+            $this->api_model->insert_api($data);
+            $array = array(
+                'success'  => true
+            );
+
+            redirect(base_url() . 'admin/home/student');
         } else {
             $array = array(
                 'error'    => true,

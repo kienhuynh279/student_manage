@@ -1,7 +1,6 @@
 <div class="admin">
     <h1 class="title">Admin Student</h1>
-    <!-- <a class="btn" href="student/index-create">Create Student</a> -->
-    <button class="btn">ADD</button>
+    <a class="btn" href="<?php echo base_url() . 'api/api/insert' ?>">Create Student</a>
     <table>
         <span id="succes_mess"></span>
         <thead>

@@ -20,7 +20,7 @@
         </div>
 
         <div class="modal-footer">
-            <input type="hidden" name="user_id" id="user_id" />
+            <input type="hidden" name="id" id="id" />
             <input type="hidden" name="data_action" id="data_action" value="Insert" />
             <input type="submit" name="action" id="action" class="btn btn-success" value="Add" />
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

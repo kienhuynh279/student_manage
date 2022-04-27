@@ -11,4 +11,16 @@ class Api_model extends CI_Model
     {
         $this->db->insert('students', $data);
     }
+
+    function fetch_single($student_id)
+    {
+        $this->db->where("id", $student_id);
+        $query = $this->db->get('students');
+        return $query->result_array();
+    }
+
+    public function update_api($data)
+    {
+        $this->db->update('students', $data);
+    }
 }
