@@ -11,6 +11,39 @@ function getAllData() {
     fetchData.send();
 }
 
+function sendData() {
+    let formData = document.querySelectorAll('input').value
+    let insertData = new XMLHttpRequest();
+
+    insertData.onreadystatechange = () => {
+        if(insertData.readyState === 4 && insertData.status === 200) {
+            let response = this.responseText
+        }
+    }
+
+    console.log(formData);
+}
+
+const customEvent = (documentObject) => {
+    return {
+        on: (event_type, css_selector, callback_function) => {
+            documentObject.addEventListener(event_type, function (event) {
+                if (event.target.matches(css_selector) === false) return;
+                callback_function.call(event.target, event);
+            }, false);
+        }
+    }
+}
+
+function getId() {
+    customEvent(document).on('click', '.button-edit', function (event) { 
+        let student_id = event.target.id;
+
+        console.log(student_id);
+        return student_id;
+    })
+}
+
 function getItemData() {
     const customEvent = (documentObject) => {
         return {
@@ -28,18 +61,21 @@ function getItemData() {
 
         let fetchItemData = new XMLHttpRequest();
         fetchItemData.open("POST", "http://localhost/StudentManage/api/test_api/fetch_single"); 
-        fetchItemData.onreadystatechange = () => {
+        function statusFetch () {
             if(fetchItemData.readyState === 4 && fetchItemData.status === 200) {
                 let response = this.responseText
             }
         }
 
-        let data = {student_id: student_id}
+        fetchItemData.onreadystatechange = statusFetch()
 
+        let data = {student_id: student_id}
+        console.log(data);
         fetchItemData.send(JSON.stringify(data))
     });
-
-    
 }
 
-getAllData();
+sendData()
+getItemData()
+
+getAllData()

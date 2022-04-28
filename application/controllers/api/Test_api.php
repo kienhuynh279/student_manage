@@ -6,52 +6,20 @@ class Test_api extends CI_Controller
 
     function index()
     {
+        $api_url = "http://localhost/StudentManage/api/api";
+        $client = curl_init($api_url);
+        curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($client);
+        curl_close($client);
+        $data['result'] = json_decode($response);
+
         $data['template'] = 'admin/student/index';
         $this->load->view('admin/home', $data);
     }
 
-    public function fetch_all()
-    {
-        $api_url = "http://localhost/StudentManage/api/api";
-
-        $client = curl_init($api_url);
-
-        curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
-
-        $response = curl_exec($client);
-
-        curl_close($client);
-
-        $result = json_decode($response);
-
-        $output = '';
-
-        if (count($result) > 0) {
-            foreach ($result as $row) {
-                $output .= '
-                    <tr>
-                        <td>' . $row->name . '</td>
-                        <td>' . $row->major . '</td>
-                        <td>' . $row->course . '</td>
-                        <td>' . $row->phone . '</td>
-                        <td><a type="button" name="edit" class="button-edit btn" href="">Edit</a></td>
-                        <td><button type="button" name="delete" class="button-edit btn" id="' . $row->id . '">Delete</button></td>
-                    </tr>';
-            }
-        } else {
-            $output .= '
-                <tr>
-                    <td colspan="6" align="center">No Data Found</td>
-                </tr>';
-        }
-
-        echo $output;
-    }
-
     public function create()
     {
-        $api_url = "http://localhost/StudentManage/api/api/insert";
-
+        $api_url = "http://localhost/StudentManage/api/api/create";
 
         $form_data = array(
             'name' => $this->input->post('name'),
@@ -61,51 +29,37 @@ class Test_api extends CI_Controller
         );
 
         $client = curl_init($api_url);
-
         curl_setopt($client, CURLOPT_POST, true);
-
         curl_setopt($client, CURLOPT_POSTFIELDS, $form_data);
-
         curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
 
         $response = curl_exec($client);
-
         curl_close($client);
 
-
-
-        // echo $response;
+        $data['template'] = 'admin/student/create';
+        $this->load->view('admin/home', $data);
     }
 
-    public function fetch_single()
+    public function fetch_single($id)
     {
         $api_url = "http://localhost/StudentManage/api/api/fetch_single";
-
         $form_data = array(
-            'id' => $this->input->post('ids-')
+            'id' => $id
         );
-
         $client = curl_init($api_url);
-
         curl_setopt($client, CURLOPT_POST, true);
-
         curl_setopt($client, CURLOPT_POSTFIELDS, $form_data);
-
         curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
-
         $response = curl_exec($client);
-
         curl_close($client);
 
-        // $data['template'] = 'admin/student/edit';
-        // $this->load->view('admin/home', $data);
 
-        echo $response;
-
-        print_r($form_data);
+        $data['student'] = $response;
+        $data['template'] = 'admin/student/edit';
+        $this->load->view('admin/home', $data);
     }
 
-    public function update()
+    public function update($id)
     {
         $api_url = "http://localhost/StudentManage/api/api/update";
 
@@ -120,15 +74,31 @@ class Test_api extends CI_Controller
         $client = curl_init($api_url);
 
         curl_setopt($client, CURLOPT_POST, true);
-
         curl_setopt($client, CURLOPT_POSTFIELDS, $form_data);
-
         curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
 
         $response = curl_exec($client);
 
         curl_close($client);
+        echo $response;
+    }
 
-        // echo $response;
+    public function delete()
+    {
+        $api_url = "http://localhost/StudentManage/api/api/delete";
+
+        $form_data = array(
+            'id'  => $this->input->post('student_id')
+        );
+
+        $client = curl_init($api_url);
+
+        curl_setopt($client, CURLOPT_POST, true);
+        curl_setopt($client, CURLOPT_POSTFIELDS, $form_data);
+        curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($client);
+        curl_close($client);
+
+        echo $response;
     }
 }

@@ -55,7 +55,7 @@ class Student extends CI_Controller
 
             $this->Students->update($id, $formArr);
 
-            redirect(base_url() . 'admin/home/student');
+            redirect(base_url() . 'api/test_api/fetch_all');
         }
     }
 

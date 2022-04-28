@@ -13,7 +13,7 @@
     <header>Header</header>
     <?php $this->load->view($template) ?>
 
-    <script type="text/javascript" src="http://localhost/StudentManage/js/ajax.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/ajax.js"></script>
 </body>
 
 </html>

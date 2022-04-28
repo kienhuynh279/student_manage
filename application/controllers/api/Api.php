@@ -1,4 +1,7 @@
 <?php
+
+use function PHPSTORM_META\type;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Api extends CI_Controller
@@ -13,11 +16,29 @@ class Api extends CI_Controller
 
     function index()
     {
-        $data = $this->api_model->fetch_all();
-        echo json_encode($data->result_array());
+        $result = $this->api_model->fetch_all();
+        $encode = json_encode($result->result_array());
+        $data['students'] = $encode;
+
+
+        echo $data['students'];
     }
 
-    function insert()
+    function fetch_single($id)
+    {
+        if ($id) {
+            $data['student'] = $this->api_model->fetch_single($id);
+            foreach ($data['student'] as $row) {
+                $output['name'] = $row["name"];
+                $output['major'] = $row["major"];
+                $output['course'] = $row["course"];
+                $output['phone'] = $row["phone"];
+            }
+            echo json_encode($output);
+        }
+    }
+
+    function create()
     {
         $this->form_validation->set_rules("name", "Name", "required");
         $this->form_validation->set_rules("major", "Major", "required");
@@ -41,33 +62,18 @@ class Api extends CI_Controller
         } else {
             $array = array(
                 'error'    => true,
-                'name_error' => form_error('name'),
+                'name_error' => form_error('name_error'),
                 'major_error' => form_error('major'),
                 'course_error' => form_error('course'),
                 'phone_error' => form_error('phone')
             );
         }
-        // 
 
-        $data['template'] = 'admin/student/create';
-        $this->load->view('admin/home', $data);
+        echo json_encode($array, true);
     }
 
-    public function fetch_single()
-    {
-        if ($this->input->post('id')) {
-            $arr = $this->api_model->fetch_single($this->input->post('id'));
-            foreach ($arr as $row) {
-                $output['name'] = $row["name"];
-                $output['course'] = $row["course"];
-                $output['major'] = $row["major"];
-                $output['phone'] = $row["phone"];
-            }
-            echo json_encode($output);
-        }
-    }
 
-    public function update()
+    public function update($id)
     {
         $this->form_validation->set_rules("name", "Name", "required");
         $this->form_validation->set_rules("major", "Major", "required");
@@ -81,12 +87,11 @@ class Api extends CI_Controller
                 'course' => trim($this->input->post('course')),
                 'phone' => trim($this->input->post('phone')),
             );
-            $this->api_model->insert_api($data);
+
+            $this->api_model->update_api($data, $id);
             $array = array(
                 'success'  => true
             );
-
-            redirect(base_url() . 'admin/home/student');
         } else {
             $array = array(
                 'error'    => true,
@@ -97,5 +102,21 @@ class Api extends CI_Controller
             );
         }
         echo json_encode($array, true);
+    }
+
+    public function delete($id)
+    {
+        if ($id) {
+            if ($this->api_model->delete_single_user($id)) {
+                $array = array(
+                    'success' => true
+                );
+            } else {
+                $array = array(
+                    'error' => true
+                );
+            }
+            echo json_encode($array);
+        }
     }
 }

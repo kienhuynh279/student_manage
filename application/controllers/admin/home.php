@@ -41,7 +41,8 @@ class Home extends CI_Controller
             $data['template'] = 'admin/dashboard';
             $this->load->view('admin/home', $data);
         } else {
-            echo 'Failed !!!';
+            $data['template'] = 'admin/dashboard';
+            $this->load->view('admin/home', $data);
         }
     }
 }
