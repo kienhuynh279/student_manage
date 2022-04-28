@@ -52,7 +52,11 @@ class Test_api extends CI_Controller
         curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($client);
         curl_close($client);
+
+
+
         $data['student'] = $response;
+
         $data['template'] = 'admin/student/edit';
         $this->load->view('admin/home', $data);
     }

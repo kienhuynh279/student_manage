@@ -1,7 +1,7 @@
 <div class="admin">
     <h1 class="title">Update Student</h1>
 
-    <form class="form" action=" <?php echo base_url() . 'api/api/update/' . $student['id'] ?>" method="post">
+    <form class="form" action=" <?php echo base_url() . 'admin/student/edit/' . $student['id'] ?>" method="post">
         <div class="form-control">
             <label for=" name">Full Name: </label>
             <input class="input" value="<?php echo set_value('name', $student['name']); ?>" type="text" name="name"

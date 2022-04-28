@@ -20,8 +20,7 @@
                 <td data-column="Course"><?php echo $student->course ?></td>
                 <td data-column="Phone"><?php echo $student->phone ?></td>
                 <td data-column="Handle">
-                    <a class="btn-table"
-                        href="<?php echo base_url() . 'api/api/fetch_single/' . $student->id ?>">Edit</a>
+                    <a class="btn-table" href="<?php echo base_url() . 'admin/student/edit/' . $student->id ?>">Edit</a>
                     <a class="btn-table" href="<?php echo base_url() . 'api/api/delete/' . $student->id ?>">Delete</a>
                 </td>
             </tr>

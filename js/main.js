@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost/StudentManage/api/api';
+const BASE_URL = 'http://localhost/StudentManage/api/api/fetch_single/3';
 const tbody = document.getElementById('tbody');
 
 function loadData () {
@@ -21,6 +21,8 @@ function loadData () {
 
     return studentsList;
 }
+
+console.log(loadData());
 
 
 

@@ -26,16 +26,12 @@ class Api extends CI_Controller
 
     function fetch_single($id)
     {
-        if ($id) {
-            $data['student'] = $this->api_model->fetch_single($id);
-            foreach ($data['student'] as $row) {
-                $output['name'] = $row["name"];
-                $output['major'] = $row["major"];
-                $output['course'] = $row["course"];
-                $output['phone'] = $row["phone"];
-            }
-            echo json_encode($output);
-        }
+        $student = $this->api_model->fetch_single($id);
+
+        echo $data['student'] = json_encode($student);
+
+        // $data['template'] = 'admin/student/edit';
+        // $this->load->view('admin/home', $data);
     }
 
     function create()
