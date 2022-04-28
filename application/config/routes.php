@@ -54,7 +54,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['admin'] = 'admin/home';
-$route['admin/home/student'] = 'api/api';
+$route['admin/home/student'] = 'api/test_api';
 $route['admin/test_api'] = 'api/test_api';
 $route['admin/home/student/index-create'] = 'admin/student/createIndex';
 $route['admin/home/student/create'] = 'admin/student/create';

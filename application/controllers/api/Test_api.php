@@ -52,53 +52,8 @@ class Test_api extends CI_Controller
         curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($client);
         curl_close($client);
-
-
         $data['student'] = $response;
         $data['template'] = 'admin/student/edit';
         $this->load->view('admin/home', $data);
-    }
-
-    public function update($id)
-    {
-        $api_url = "http://localhost/StudentManage/api/api/update";
-
-
-        $form_data = array(
-            'name' => $this->input->post('name'),
-            'major' => $this->input->post('major'),
-            'course' => $this->input->post('course'),
-            'phone' => $this->input->post('phone'),
-        );
-
-        $client = curl_init($api_url);
-
-        curl_setopt($client, CURLOPT_POST, true);
-        curl_setopt($client, CURLOPT_POSTFIELDS, $form_data);
-        curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
-
-        $response = curl_exec($client);
-
-        curl_close($client);
-        echo $response;
-    }
-
-    public function delete()
-    {
-        $api_url = "http://localhost/StudentManage/api/api/delete";
-
-        $form_data = array(
-            'id'  => $this->input->post('student_id')
-        );
-
-        $client = curl_init($api_url);
-
-        curl_setopt($client, CURLOPT_POST, true);
-        curl_setopt($client, CURLOPT_POSTFIELDS, $form_data);
-        curl_setopt($client, CURLOPT_RETURNTRANSFER, true);
-        $response = curl_exec($client);
-        curl_close($client);
-
-        echo $response;
     }
 }

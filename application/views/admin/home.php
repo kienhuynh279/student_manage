@@ -12,8 +12,8 @@
 <body>
     <header>Header</header>
     <?php $this->load->view($template) ?>
-
-    <script type="text/javascript" src="<?php echo base_url(); ?>js/ajax.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/main.js"></script>
 </body>
 
 </html>

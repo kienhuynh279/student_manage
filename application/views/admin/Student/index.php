@@ -15,11 +15,11 @@
         <tbody id="tbody">
             <?php foreach ($result as $item => $student) : ?>
             <tr>
-                <td data-column="First Name"><?php echo $student->name ?></td>
-                <td data-column="Last Name"><?php echo $student->major ?></td>
-                <td data-column="Job Title"><?php echo $student->course ?></td>
-                <td data-column="Job Title"><?php echo $student->phone ?></td>
-                <td data-column="Twitter">
+                <td data-column="Name"><?php echo $student->name ?></td>
+                <td data-column="Major"><?php echo $student->major ?></td>
+                <td data-column="Course"><?php echo $student->course ?></td>
+                <td data-column="Phone"><?php echo $student->phone ?></td>
+                <td data-column="Handle">
                     <a class="btn-table"
                         href="<?php echo base_url() . 'api/api/fetch_single/' . $student->id ?>">Edit</a>
                     <a class="btn-table" href="<?php echo base_url() . 'api/api/delete/' . $student->id ?>">Delete</a>
@@ -29,5 +29,3 @@
         </tbody>
     </table>
 </div>
-
-<!-- <h1>action=" echo base_ur . 'admin/home/student/create' ?>"</h1> -->
