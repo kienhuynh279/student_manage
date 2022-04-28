@@ -116,7 +116,8 @@ class Api extends CI_Controller
                     'error' => true
                 );
             }
-            echo json_encode($array);
+
+            redirect(base_url() . 'api/test_api');
         }
     }
 }

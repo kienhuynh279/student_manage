@@ -1,6 +1,6 @@
 <div id="userModal" class="modal fade">
     <div class="modal-dialog">
-        <form method="post" id="user_form">
+        <form method="post" id="create-student-form">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title title">Add User</h4>
@@ -28,10 +28,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden" name="user_id" id="user_id" />
-                    <input type="hidden" name="data_action" id="data_action" value="Insert" />
                     <input type="submit" name="action" id="action" class="btn btn-success" value="Add" />
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <a type="button" href="<?php echo base_url() . 'api/test_api' ?>" class="btn btn-default"
+                        data-dismiss="modal">Close</a>
                 </div>
             </div>
         </form>
