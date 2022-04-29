@@ -61,12 +61,6 @@ class Student extends CI_Controller
 
     public function delete($id)
     {
-        $this->load->model('Students');
-        $student = $this->Students->getStudentById($id);
-        if (empty($student)) {
-            redirect(base_url() . 'admin/home/student');
-        }
-
         $this->Students->delete($id);
         redirect(base_url() . 'admin/home/student');
     }
