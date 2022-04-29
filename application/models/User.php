@@ -13,7 +13,8 @@ class User extends CI_Model
 
         $this->userTbl = 'users';
     }
-    function getLogin($email, $pass)
+
+    public function getLogin($email, $pass)
     {
         $this->db->where('email', $email);
         $this->db->where('password', $pass);

@@ -32,7 +32,6 @@ class Student_api extends CI_Controller
             $course = trim($this->input->post('course'));
             $phone = trim($this->input->post('phone'));
             $this->student_model->insert_student($name, $major, $course, $phone);
-
             redirect(base_url() . 'admin/home/student');
         } else {
             $array = array(
@@ -60,9 +59,7 @@ class Student_api extends CI_Controller
             $course = $this->input->post('course');
             $phone = $this->input->post('phone');
             $this->student_model->update_student($id, $name, $major, $course, $phone);
-
             redirect(base_url() . 'admin/home/student');
-
             $array = array(
                 'error' => false,
             );
@@ -75,7 +72,6 @@ class Student_api extends CI_Controller
                 'phone_error' => form_error('phone')
             );
         }
-
         echo json_encode($array, true);
     }
 

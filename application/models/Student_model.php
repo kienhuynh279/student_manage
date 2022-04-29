@@ -12,7 +12,6 @@ class Student_model extends CI_Model
         $data['major'] = $major;
         $data['course'] = $course;
         $data['phone'] = $phone;
-
         $this->db->insert('students', $data);
     }
 
@@ -26,14 +25,14 @@ class Student_model extends CI_Model
         $this->db->update('students', $data);
     }
 
-    function fetch_single_student($id)
+    public function fetch_single_student($id)
     {
         $this->db->where('id', $id);
         $query = $this->db->get('students');
         return $query->row_array();
     }
 
-    function delete_single_student($id)
+    public function delete_single_student($id)
     {
         $this->db->where("id", $id);
         $this->db->delete("students");

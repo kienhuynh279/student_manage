@@ -24,7 +24,6 @@ class Home extends CI_Controller
         $this->load->model('user');
         $result = $this->user->getLogin($email, $pass);
         $user = $this->db->get_where('users', ['email' => $email])->row();
-
         if ($result == 1) {
             $session = array(
                 'id' => $user->id,
@@ -33,9 +32,7 @@ class Home extends CI_Controller
                 'email' => $user->email,
                 'phone' => $user->phone
             );
-
             $this->session->set_userdata($session);
-
             $data['template'] = 'admin/dashboard';
             $this->load->view('admin/home', $data);
         } else {
