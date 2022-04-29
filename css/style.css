@@ -113,6 +113,7 @@ only screen and (max-width: 760px),
 }
 
 .title {
+	text-align: center;
     margin: 20px 0;
 }
 
@@ -120,11 +121,20 @@ only screen and (max-width: 760px),
     padding: 8px 12px;
     border: solid transparent 1px;
     background-color: seagreen;
-
+	margin: 10px 12px;
+	min-width: 100px;
+	min-height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
     border-radius: 8px;
     text-decoration: none;
     color: #fff;
 	cursor: pointer;
+}
+
+.btn-cancel {
+    background-color: #999;
 }
 
 .btn-table {
@@ -132,22 +142,11 @@ only screen and (max-width: 760px),
 	text-decoration: none;
 	font-weight: 300;
 }
-
-.btn-cancel {
-	padding: 8px 12px;
-    border: solid transparent 1px;
-    background-color: #999999;
-
-    border-radius: 8px;
-    text-decoration: none;
-    color: #fff;
-}
-
 .input {
 	border: 0; 
 	padding: 7px 0; 
 	border-bottom: 1px solid #ccc;
-	width: 200%;
+	width: 100%;
 	margin: 6px 0;
 }
 
@@ -166,6 +165,12 @@ only screen and (max-width: 760px),
 	align-items: flex-start;
 }
 
-.popupForm {
-	display: none;
-  }
+.footer-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-dialog {
+	margin: 0 10em;
+}

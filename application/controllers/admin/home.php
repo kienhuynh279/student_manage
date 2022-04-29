@@ -21,10 +21,8 @@ class Home extends CI_Controller
     {
         $email = $this->input->post('email');
         $pass = md5($this->input->post('password'));
-
         $this->load->model('user');
         $result = $this->user->getLogin($email, $pass);
-
         $user = $this->db->get_where('users', ['email' => $email])->row();
 
         if ($result == 1) {
@@ -41,8 +39,7 @@ class Home extends CI_Controller
             $data['template'] = 'admin/dashboard';
             $this->load->view('admin/home', $data);
         } else {
-            $data['template'] = 'admin/dashboard';
-            $this->load->view('admin/home', $data);
+            redirect(base_url() . 'admin');
         }
     }
 }
