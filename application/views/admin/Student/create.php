@@ -26,7 +26,7 @@
         </div>
         <div class="footer-form">
             <input type="submit" name="action" id="action" class="btn btn-success" value="Add" />
-            <a type="button" href="<?php echo base_url() . 'api/student_test_api' ?>" class="btn btn-cancel"
+            <a type="button" href="<?php echo base_url() . 'api/student_view_api' ?>" class="btn btn-cancel"
                 data-dismiss="modal">Close</a>
         </div>
     </form>

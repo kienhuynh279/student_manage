@@ -1,6 +1,6 @@
 <div class="admin">
     <h1 class="title">Admin Student</h1>
-    <a class="btn" href="<?php echo base_url() . 'api/student_test_api/create' ?>">Create Student</a>
+    <a class="btn" href="<?php echo base_url() . 'api/student_view_api/create' ?>">Create Student</a>
     <table>
         <span id="succes_mess"></span>
         <thead>
@@ -21,7 +21,7 @@
                 <td data-column="Phone"><?php echo $student->phone ?></td>
                 <td data-column="Handle">
                     <a onclick="getId()" class="btn-table button-edit"
-                        href="<?php echo base_url() . 'api/student_test_api/update/' . $student->id ?>"
+                        href="<?php echo base_url() . 'api/student_view_api/update/' . $student->id ?>"
                         id="<?php echo $student->id ?>">Edit</a>
                     <a class="btn-table"
                         href="<?php echo base_url() . 'api/student_api/delete/' . $student->id ?>">Delete</a>

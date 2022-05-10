@@ -12,7 +12,6 @@
 <body>
     <header>Header</header>
     <?php $this->load->view($template) ?>
-    <script type="text/javascript" src="<?php echo base_url(); ?>js/main.js"></script>
 </body>
 
 </html>

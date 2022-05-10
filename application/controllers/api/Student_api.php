@@ -78,6 +78,6 @@ class Student_api extends CI_Controller
     public function delete($id)
     {
         $this->student_model->delete_single_student($id);
-        redirect(base_url() . 'api/student_test_api');
+        redirect(base_url() . 'api/student_view_api');
     }
 }

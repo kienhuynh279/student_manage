@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Student_test_api extends CI_Controller
+class Student_view_api extends CI_Controller
 {
     public function index()
     {
@@ -11,6 +11,7 @@ class Student_test_api extends CI_Controller
         $response = curl_exec($client);
         curl_close($client);
         $data['result'] = json_decode($response);
+
         $data['template'] = 'admin/student/index';
         $this->load->view('admin/home', $data);
     }
